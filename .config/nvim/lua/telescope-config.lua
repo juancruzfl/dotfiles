@@ -12,7 +12,7 @@ require("telescope").setup {
     find_files = {
         mappings = {
             i = {
-                ["<C-p>"] = "move_selection_next",
+                ["<C-j>"] = "move_selection_next",
                 ["<C-k>"] = "move_selection_previous",
             },
             n = {

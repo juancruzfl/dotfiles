@@ -20,15 +20,64 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
         {
-            "yorumicolors/yorumi.nvim",
-            config = function()
-                vim.cmd.colorscheme("yorumi")
-            end,
+          'sainnhe/everforest',
+          lazy = false,
+          priority = 1000,
+          config = function()
+            vim.o.background = "dark"
+            vim.g.everforest_background = "hard"
+            vim.g.everforest_ui_contrast = "high"
+            vim.g.everforest_enable_italic = 1
+            vim.g.everforest_transparent_background = 1
+            vim.g.everforest_diagnostic_virtual_text = 'grey'
+            vim.cmd.colorscheme('everforest')
+          end
         },
 
         {
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            config = function()
+                require("lualine").setup {
+                    options = {
+                        theme = "everforest"
+                    }
+                }
+                end
+        },
+
+       {
+            "karb94/neoscroll.nvim",
+              config = function()
+                local neoscroll = require('neoscroll')
+                neoscroll.setup({
+                    hide_cursor = true,
+                    stop_eof = true,
+                    respect_scrolloff = false,
+                    easing_function = "quadratic",
+                    duration_multiplier = 1.0,
+                    cursor_scroll_alone = true,
+                    easing = "quadratic",
+                })
+                local keymap = {
+                  ["<C-k>"] = function() neoscroll.ctrl_u({ duration = 150 }) end,
+                  ["<C-j>"] = function() neoscroll.ctrl_d({ duration = 150 }) end,
+                  ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end,
+                  ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end,
+                  ["zt"] = function() neoscroll.zt({ half_win_duration = 150 }) end,
+                  ["zz"] = function() neoscroll.zz({ half_win_duration = 150 }) end,
+                  ["zb"] = function() neoscroll.zb({ half_win_duration = 150 }) end,
+                }
+                local modes = { 'n', 'v', 'x' }
+                for key, func in pairs(keymap) do
+                  vim.keymap.set(modes, key, func)
+                end
+              end
+        },
+        {
             "nvim-lua/plenary.nvim",
         },
+
 
         {
             "nvim-telescope/telescope.nvim",
@@ -53,15 +102,14 @@ require("lazy").setup({
                     indent = {
                         enable = true,
                     },
-
                     ensure_installed = {
                         "lua",
                         "vim",
                         "python",
+                        "query",
                         "javascript",
                         "c",
                         "vimdoc",
-                        "query",
                         "make",
                         "css",
                         "dockerfile",
@@ -120,6 +168,15 @@ require("lazy").setup({
 
         {
             "neovim/nvim-lspconfig",
+            config = function()
+                vim.lsp.config("codebook", {
+                    filetypes = {
+                        "markdown",
+                        "text",
+                        "gitcommit",
+                    },
+                })
+                end
         },
 
         {
@@ -314,7 +371,6 @@ require("lazy").setup({
 
 
     },
-  install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
 
 })

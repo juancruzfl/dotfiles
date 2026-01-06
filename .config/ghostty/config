@@ -1,0 +1,26 @@
+# --- Appearance ---
+# Use the exact Everforest Hard background to match your tmux @ef_bg
+
+# Highlight/Selection colors
+# Cursor styling to match your "NORMAL" mode green
+cursor-color = #a7c080
+cursor-style = block
+shell-integration-features = no-cursor
+
+# --- Window Layout (Fixes the "Cut Off" issue) ---
+# Setting padding to 0 ensures the tmux bar sits flush against the edges
+window-padding-x = 0
+window-padding-y = 0
+
+# Removes the title bar for a cleaner, "holistic" look
+window-decoration = false
+
+# --- Fonts ---
+# Ensure you are using a Nerd Font for your tmux arrows/icons
+font-family = "JetBrainsMono Nerd Font"
+font-size = 11
+
+# --- Performance & Features ---
+# Ghostty handles transparency better than GNOME Terminal
+# background-opacity = 0.95
+# background-blur-radius = 20

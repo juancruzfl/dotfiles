@@ -11,6 +11,9 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
+# opencode
+export PATH=/home/cruzj/.opencode/bin:$PATH
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -23,8 +26,11 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
-alias 'mkcd=mkcd(){ mkdir "$1"; cd "$1"; }; mkcd'
+alias 'mkcd=mkcd(){ mkdir -p "$1" && cd "$1"; }; mkcd'
 alias 'c=xclip -selection clipboard'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 unset rc
+
+
+. "$HOME/.cargo/env"
