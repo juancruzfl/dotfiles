@@ -1,4 +1,3 @@
-
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
     return
@@ -24,7 +23,35 @@ require("telescope").setup {
     live_grep = {
         mappings = {
             i = {
-            ["<C-s>"] = "select_horizontal",
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
+            },
+            n = {
+                ["kj"] = "close",
+            },
+        },
+    },
+
+    buffers = {
+        mappings = {
+            i = {
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
+            },
+            n = {
+                ["kj"] = "close",
+            },
+        },
+    },
+
+    help_tags ={
+        mappings = {
+            i = {
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
+            },
+            n = {
+                ["kj"] = "close",
             },
         },
     },
@@ -32,9 +59,7 @@ require("telescope").setup {
 }
 
 -- key maps
-local builtin = require('telescope.builtin')  
 map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })  
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })  
 map('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })  
 map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-
