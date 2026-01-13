@@ -60,10 +60,10 @@ require("lazy").setup({
                     easing = "quadratic",
                 })
                 local keymap = {
-                  ["<C-k>"] = function() neoscroll.ctrl_u({ duration = 150 }) end,
-                  ["<C-j>"] = function() neoscroll.ctrl_d({ duration = 150 }) end,
-                  ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end,
-                  ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end,
+                  ["<C-k>"] = function() neoscroll.ctrl_u({ duration = 12; easing = 'sine'}) end,
+                  ["<C-j>"] = function() neoscroll.ctrl_d({ duration = 12; easing = 'sine' }) end,
+                  ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450; easing = 'circular' }) end,
+                  ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450; easing = 'circular' }) end,
                   ["zt"] = function() neoscroll.zt({ half_win_duration = 150 }) end,
                   ["zz"] = function() neoscroll.zz({ half_win_duration = 150 }) end,
                   ["zb"] = function() neoscroll.zb({ half_win_duration = 150 }) end,
@@ -281,7 +281,7 @@ require("lazy").setup({
                 win_options = {
                     wrap = false,
                     signcolumn = "no",
-                    cursorcolumn = "false",
+                    cursorcolumn = false,
                     foldcolumn = "0",
                     spell = false,
                     list = false,
