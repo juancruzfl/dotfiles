@@ -9,7 +9,7 @@ window-padding-x = 5
 window-padding-y = 0
 window-padding-color = background
 window-padding-balance = true
-window-decoration = true
+window-decoration = false
 window-theme = dark
 
 # cursor styling
@@ -27,6 +27,8 @@ keybind = super+ctrl+h=goto_split:left
 keybind = super+ctrl+l=goto_split:right
 keybind = super+ctrl+k=goto_split:up
 keybind = super+ctrl+j=goto_split:down
+keybind = shift+up=scroll_page_lines:-1
+keybind = shift+down=scroll_page_lines:1
 
 # tabs
 keybind = super+t=new_tab
