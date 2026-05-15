@@ -101,3 +101,10 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", defaults)
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", defaults)
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", defaults)
 -- insert mode keymaps (for undo, redo, and other actions)
+
+-- Keybindings for opening Oil 
+-- current file directory
+vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", defaults)
+
+-- current working directory
+vim.keymap.set("n", "<leader>O", "<CMD>Oil --float<CR>", defaults)
